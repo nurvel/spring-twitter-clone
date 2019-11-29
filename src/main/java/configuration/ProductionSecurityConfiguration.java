@@ -15,26 +15,22 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@Profile("default")
-public class DevelopmentSecurityConfiguration extends WebSecurityConfigurerAdapter {
+@Profile("prod")
+public class ProductionSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-
-
-		// poistetaan csrf-tarkistus käytöstä h2-konsolin vuoksi
-		http.csrf().disable();
-		http.headers().frameOptions().sameOrigin();
-		
 		
 	    http.authorizeRequests()
 	        .antMatchers("/*").permitAll()
 	        .anyRequest().authenticated().and()
 	        .formLogin().permitAll().and()
 	        .logout().permitAll();
+	    
+	    // TODO: configure to production
 		
 
 	}
