@@ -7,18 +7,20 @@
 </head>
 <body>
 
-	<h1>Hello Accounts</h1>
+	<h1>
+		<span th:text=${account.username}></span>
+	</h1>
 
 	<ol>
-		<li th:each="account : ${account}"><span
-			th:text="${account.username}">msg</span>
+		<li th:each="account : ${account}"><span> <a
+				th:href="@{/accounts/{username}(username=${account.username})}">
+					<span th:text="${account.username}"> un </span>
+			</a>
+		</span>
 			<ol>
 				<li th:each="tweet : ${account.tweets}"><span
-					th:text="${tweet.text}">msg</span>
-				</li>
-			</ol>
-			
-		</li>
+					th:text="${tweet.text}">msg</span></li>
+			</ol></li>
 	</ol>
 
 
