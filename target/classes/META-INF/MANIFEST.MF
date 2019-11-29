@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: wepa_Projekti
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: vellu
+Implementation-Vendor-Id: tkt
+Build-Jdk: 1.8.0_222
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/wepa_Projekti
+Created-By: Maven Integration for Eclipse
+

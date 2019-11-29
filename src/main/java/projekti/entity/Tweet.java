@@ -23,7 +23,7 @@ public class Tweet extends AbstractPersistable<Long> {
 	private String text;
 	private LocalDateTime postTime;
 	
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne
 	private Account poster;
 
 	@ElementCollection(fetch = FetchType.EAGER)

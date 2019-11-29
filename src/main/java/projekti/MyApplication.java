@@ -2,7 +2,9 @@ package projekti;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
@@ -11,6 +13,7 @@ import projekti.service.AccountService;
 import projekti.service.TweetService;
 
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class}) // TODO: fix
 public class MyApplication {
 
 	public static void main(String[] args) {
