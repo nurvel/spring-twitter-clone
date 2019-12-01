@@ -1,13 +1,14 @@
 package projekti.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import projekti.entity.Account;
+import projekti.entity.Comment;
 import projekti.entity.Tweet;
+import projekti.repository.CommentRepository;
 import projekti.repository.TweetRepository;
 
 @Service
@@ -15,6 +16,9 @@ public class TweetService {
 
 	@Autowired
 	TweetRepository tweetRepository;
+
+	@Autowired
+	CommentRepository commentRepository;
 
 	public List<Tweet> findAll() {
 		return tweetRepository.findAll();
@@ -41,6 +45,23 @@ public class TweetService {
 		}
 
 		tweetRepository.save(tweet);
+
+	}
+
+	public void commentTweet(Long tweetId, Account account, String commentText) {
+
+		Tweet tweet = tweetRepository.getOne(tweetId);
+
+		Comment comment = new Comment();
+		comment.setText(commentText);
+		comment.setPoster(account);
+		comment.setTweet(tweet);
+		// comment.setPostTime(postTime);
+
+		System.out.println("MY COMMENT " + comment.toString());
+
+		// tweet.getComments().add(comment);
+		commentRepository.save(comment);
 	}
 
 }

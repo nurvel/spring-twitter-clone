@@ -20,7 +20,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = { "tweets", "password", "authorities", "likedTweets" })
+@ToString(exclude = { "tweets", "password", "authorities", "likedTweets", "comments" })
 public class Account extends AbstractPersistable<Long> {
 
 	private String username;
@@ -32,7 +32,9 @@ public class Account extends AbstractPersistable<Long> {
 	@OneToMany(mappedBy = "poster")
 	private List<Tweet> tweets = new ArrayList<>();
 
-
+	@OneToMany(mappedBy = "poster")
+	private List<Comment> comments = new ArrayList<>();
+	
 	@ManyToMany(mappedBy = "likes")
 	private List<Tweet> likedTweets = new ArrayList<>();
 

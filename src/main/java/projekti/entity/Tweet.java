@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -34,6 +35,9 @@ public class Tweet extends AbstractPersistable<Long> {
 			  joinColumns = @JoinColumn(name = "tweet_id"), 
 			  inverseJoinColumns = @JoinColumn(name = "account_id"))
 	private List<Account> likes = new ArrayList<>();
+	
+	@OneToMany (mappedBy = "tweet")
+	private List<Comment> comments = new ArrayList<>();
 
 	// private List<String> comments; // TOOD: modify to comment-object?
 

@@ -1,4 +1,6 @@
+/home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/repository/CommentRepository.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/MyApplication.java
+/home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/entity/Comment.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/configuration/DevelopmentSecurityConfiguration.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/configuration/ProductionSecurityConfiguration.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/service/TweetService.java

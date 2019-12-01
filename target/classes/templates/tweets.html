@@ -3,17 +3,20 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Accounts</title>
+<title>All Tweets</title>
 </head>
 <body>
 
 	<h1>All em tweets</h1>
 
 	<ol>
-		<li th:each="tweet : ${tweets}">
-		<span th:text="${tweet.text}"> tweetti</span>
-		<span th:text="${tweet.likes}"> tweetti</span>
-		</li>
+		<li th:each="tweet : ${tweets}"><span th:text="${tweet.text}">
+				tweetti</span> <span th:text="${tweet.likes}"> likes</span>
+			<ol>
+				<li th:each="comment : ${tweet.comments}"><span
+					th:text="${comment.poster.username}"> comment</span> <span>
+				</span><span th:text="${comment.text}"> comment</span></li>
+			</ol></li>
 	</ol>
 
 </body>
