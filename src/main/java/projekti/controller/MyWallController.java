@@ -26,7 +26,7 @@ public class MyWallController {
 
 		Account account = accountService.getAuthenticatedAcccount();
 
-		List<Tweet> myWallTweets = myWallService.getMyWall(account);
+		List<Tweet> myWallTweets = myWallService.getMyWall();
 		model.addAttribute("tweets", myWallTweets);
 		model.addAttribute("account", account);
 
