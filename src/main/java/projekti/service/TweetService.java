@@ -24,10 +24,23 @@ public class TweetService {
 
 		Tweet tweet = new Tweet();
 		tweet.setText(tweetText);
-		//tweet.setPostTime();
+		// tweet.setPostTime();
 		tweet.setPoster(account);
 
 		return tweetRepository.save(tweet);
+	}
+
+	public void likeTweet(Long tweetId, Account account) {
+
+		Tweet tweet = tweetRepository.getOne(tweetId);
+
+		if (tweet.getLikes().contains(account)) {
+			tweet.getLikes().remove(account);
+		} else {
+			tweet.getLikes().add(account);
+		}
+
+		tweetRepository.save(tweet);
 	}
 
 }

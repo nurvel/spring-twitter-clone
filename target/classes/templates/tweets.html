@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Accounts</title>
+</head>
+<body>
+
+	<h1>All em tweets</h1>
+
+	<ol>
+		<li th:each="tweet : ${tweets}">
+		<span th:text="${tweet.text}"> tweetti</span>
+		<span th:text="${tweet.likes}"> tweetti</span>
+		</li>
+	</ol>
+
+</body>
+</html>

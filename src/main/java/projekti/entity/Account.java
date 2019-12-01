@@ -6,9 +6,9 @@ import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.CascadeType;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "tweets")
+@ToString(exclude = { "tweets", "password", "authorities", "likedTweets" })
 public class Account extends AbstractPersistable<Long> {
 
 	private String username;
@@ -31,6 +31,10 @@ public class Account extends AbstractPersistable<Long> {
 
 	@OneToMany(mappedBy = "poster")
 	private List<Tweet> tweets = new ArrayList<>();
+
+
+	@ManyToMany(mappedBy = "likes")
+	private List<Tweet> likedTweets = new ArrayList<>();
 
 	public Account(String username, String password, List<String> authorities) {
 		this.username = username;

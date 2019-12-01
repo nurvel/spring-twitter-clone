@@ -22,10 +22,6 @@ public class AccountController {
 	@GetMapping("/accounts")
 	public String list(Model model) {
 		List<Account> as = accountService.findAll();
-		for (Account a : as) {
-			System.out.println("tweetit" + a.getTweets().toString());
-		}
-
 		model.addAttribute("accounts", accountService.findAll());
 		return "accounts";
 	}

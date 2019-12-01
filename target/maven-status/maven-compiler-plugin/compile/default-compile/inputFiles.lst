@@ -5,9 +5,10 @@
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/repository/TweetRepository.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/controller/DefaultController.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/entity/Tweet.java
-/home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/controller/ControllerAdvisor.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/service/AccountService.java
+/home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/controller/CustomErrorController.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/repository/AccountRepository.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/configuration/CustomUserDetailsService.java
+/home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/controller/TweetController.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/entity/Account.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/controller/AccountController.java
