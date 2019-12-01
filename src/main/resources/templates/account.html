@@ -19,7 +19,14 @@
 		</span>
 			<ol>
 				<li th:each="tweet : ${account.tweets}"><span
-					th:text="${tweet.text}">msg</span></li>
+					th:text="${tweet.text}">tweet text</span><span
+					th:text="${tweet.likes}">likes</span><span><span>
+						<form method="POST" th:action="@{/tweets/like}" >
+						<input type="hidden"  name="tweetId" th:value="${tweet.id}">  
+							<input type="submit" value="Like" />
+						</form>
+				</span>
+				</li>
 			</ol></li>
 	</ol>
 

@@ -2,6 +2,8 @@ package projekti.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,10 +34,14 @@ public class TweetController {
 	}
 
 	@PostMapping("/tweets/like")
-	public String likeTweet(@RequestParam Long tweetId) {
+	public String likeTweet(HttpServletRequest request, @RequestParam Long tweetId) {
 		Account account = accountService.getAuthenticatedAcccount();
 		tweetService.likeTweet(tweetId, account);
-		return "redirect:/tweets"; // TODO:return to current page, dynamic
+
+		String referer = request.getHeader("Referer");
+		return "redirect:" + referer;
 	}
 
+
+	
 }
