@@ -28,7 +28,6 @@ public class MyWallController {
 
 		List<Tweet> myWallTweets = myWallService.getMyWall(account);
 		model.addAttribute("tweets", myWallTweets);
-
 		model.addAttribute("account", account);
 
 		return account == null ? "redirect:/" : "mywall";

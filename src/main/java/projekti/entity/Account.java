@@ -1,7 +1,9 @@
 package projekti.entity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -20,7 +22,8 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = { "tweets", "password", "authorities", "likedTweets", "comments" })
+@ToString(
+		exclude = { "tweets", "password", "authorities", "likedTweets", "comments", "parent", "followers", "following" })
 public class Account extends AbstractPersistable<Long> {
 
 	private String username;
@@ -34,9 +37,25 @@ public class Account extends AbstractPersistable<Long> {
 
 	@OneToMany(mappedBy = "poster")
 	private List<Comment> comments = new ArrayList<>();
-	
+
 	@ManyToMany(mappedBy = "likes")
 	private List<Tweet> likedTweets = new ArrayList<>();
+
+	@ElementCollection(targetClass = String.class)
+	private Set<String> followers = new HashSet<>(); // HOX: jostain syystä lisätään 2 kertaa
+
+	@ElementCollection(targetClass = String.class)
+	private Set<String> following = new HashSet<>(); // HOX: jostain syystä lisätään 2 kertaa
+
+	
+//	@ManyToOne
+//	private Account parent = this;
+//	@OneToMany(mappedBy = "parent")
+//	private List<Account> following = new ArrayList<>();
+//	@OneToMany(mappedBy = "parent")
+//	private List<Account> followers = new ArrayList<>();
+
+	// private List<Account> blockedUsers = new ArrayList<>(); TODO: 2-way
 
 	public Account(String username, String password, List<String> authorities) {
 		this.username = username;

@@ -35,6 +35,19 @@ public class AccountService {
 		return accountRepository.save(a);
 	}
 
+	public void startFollow(String followUsername) {
+		Account account = getAuthenticatedAcccount();
+		Account followAccount = findAccount(followUsername);
+
+		if (account == followAccount)
+			return;
+
+		account.getFollowing().add(followUsername);
+		followAccount.getFollowers().add(account.getUsername());
+		accountRepository.save(account);
+		accountRepository.save(followAccount);
+	}
+
 	// TODO: Throw exception?
 	public Account getAuthenticatedAcccount() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

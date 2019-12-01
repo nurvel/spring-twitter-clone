@@ -14,6 +14,12 @@
 				th:href="@{/accounts/{username}(username=${account.username})}">
 					<span th:text="${account.username}"> un </span>
 			</a>
+
+				<form method="POST" th:action="@{/accounts/follow}">
+					<input type="hidden" name="followUsername" th:value="${account.username}">
+					<input type="submit" value="Follow" />
+				</form>
+
 		</span>
 
 			<ol>
@@ -25,8 +31,8 @@
 						</form>
 						<form method="POST" th:action="@{/tweets/comment}">
 							<input type="hidden" name="tweetId" th:value="${tweet.id}">
-							<input type="text" name="commentText" >
-							<input type="submit" value="Comment" />
+							<input type="text" name="commentText"> <input
+								type="submit" value="Comment" />
 						</form>
 				</span></li>
 			</ol></li>

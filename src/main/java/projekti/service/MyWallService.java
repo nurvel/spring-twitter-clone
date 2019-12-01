@@ -19,6 +19,8 @@ public class MyWallService {
 		
 		// TODO: get 1) My tweets 2) Tweets from who i follow
 		
+		
+		
 		return tweetRepository.findAll();
 
 	}

@@ -22,6 +22,21 @@
 	</div>
 
 
+	<span> I am following:
+		<ol>
+			<li th:each="username : ${account.following}"><span
+				th:text="${username}"> username</span>
+		</ol>
+	</span>
+
+
+	<span> Are following me:
+		<ol>
+			<li th:each="username : ${account.followers}"><span
+				th:text="${username}"> username</span>
+		</ol>
+	</span>
+
 	<ol>
 		<li th:each="tweet : ${tweets}"><span th:text="${tweet.text}">
 				tweetti</span> <span th:text="${tweet.likes}"> likes</span>

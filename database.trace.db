@@ -709,3 +709,9 @@ org.h2.message.DbException: The connection was not closed by the application and
 Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-197]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
 	... 85 more
+2019-12-01 19:24:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "trump"; SQL statement:
+insert into account (password, username, id) values (?, ?, ?) [22018-197]
+2019-12-01 19:25:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "trump"; SQL statement:
+insert into account (password, username, id) values (?, ?, ?) [22018-197]
