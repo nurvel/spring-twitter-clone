@@ -1,26 +1,37 @@
 package projekti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import projekti.entity.Account;
+import projekti.entity.Tweet;
 import projekti.service.AccountService;
+import projekti.service.MyWallService;
 
 @Controller
-public class DefaultController {
+public class MyWallController {
 
 	@Autowired
 	private AccountService accountService;
 
-	@GetMapping("/")
-	public String helloWorld(Model model) {
+	@Autowired
+	private MyWallService myWallService;
+
+	@GetMapping("/mywall")
+	public String list(Model model) {
 
 		Account account = accountService.getAuthenticatedAcccount();
 
-		model.addAttribute("message", "World!");
+		List<Tweet> myWallTweets = myWallService.getMyWall(account);
+		model.addAttribute("tweets", myWallTweets);
 
-		return account != null ? "redirect:/mywall" : "index";
+		model.addAttribute("account", account);
+
+		return account == null ? "redirect:/" : "mywall";
 	}
+
 }

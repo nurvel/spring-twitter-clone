@@ -29,14 +29,21 @@ public class TweetController {
 	public String allTweets(Model model) {
 		List<Tweet> tweets = tweetService.findAll();
 		model.addAttribute("tweets", tweets);
-		// System.out.println(tweets.get(0).toString());
 		return "tweets";
+	}
+
+	@PostMapping("/tweets/new")
+	public String newTweet(HttpServletRequest request, @RequestParam String tweetText) {
+		Account account = accountService.getAuthenticatedAcccount();
+		tweetService.addTweet(tweetText, account);
+
+		String referer = request.getHeader("Referer");
+		return "redirect:" + referer;
 	}
 
 	@PostMapping("/tweets/like")
 	public String likeTweet(HttpServletRequest request, @RequestParam Long tweetId) {
 		Account account = accountService.getAuthenticatedAcccount();
-
 		tweetService.likeTweet(tweetId, account);
 
 		String referer = request.getHeader("Referer");
@@ -46,9 +53,6 @@ public class TweetController {
 	@PostMapping("/tweets/comment")
 	public String commentTweet(HttpServletRequest request, @RequestParam Long tweetId, @RequestParam String commentText) {
 		Account account = accountService.getAuthenticatedAcccount();
-
-		System.out.println("ADD NEW COMMENT: " + commentText);
-
 		tweetService.commentTweet(tweetId, account, commentText);
 
 		String referer = request.getHeader("Referer");

@@ -39,6 +39,5 @@ public class Tweet extends AbstractPersistable<Long> {
 	@OneToMany (mappedBy = "tweet")
 	private List<Comment> comments = new ArrayList<>();
 
-	// private List<String> comments; // TOOD: modify to comment-object?
 
 }
