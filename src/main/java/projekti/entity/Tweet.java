@@ -35,7 +35,6 @@ public class Tweet extends AbstractPersistable<Long> {
 			  name = "tweet_like", 
 			  joinColumns = @JoinColumn(name = "tweet_id"), 
 			  inverseJoinColumns = @JoinColumn(name = "account_id"))
-	//@ElementCollection(fetch = FetchType.EAGER)
 	private List<Account> likes = new ArrayList<>();
 
 	// private List<String> comments; // TOOD: modify to comment-object?
