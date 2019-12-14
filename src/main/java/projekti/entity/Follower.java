@@ -26,6 +26,8 @@ public class Follower extends AbstractPersistable<Long> {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Account followed;
 
+	// boolean blokked?
+	
 //	private LocalDateTime interactionTimestamp;
 
 //	public Follower(Account account) {

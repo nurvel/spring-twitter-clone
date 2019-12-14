@@ -52,7 +52,7 @@ public class AccountController {
 
 	@PostMapping("/accounts/follow")
 	public String add(HttpServletRequest request, @RequestParam String followUsername) {
-		accountService.startFollow(followUsername);
+		//accountService.startFollow(followUsername); // FIX method
 
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;
