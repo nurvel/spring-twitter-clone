@@ -47,7 +47,7 @@
 	</div>
 
 
-	<div th:fragment="tweetlist">
+	<div th:fragment="tweetlist(tweets)">
 
 
 
@@ -60,11 +60,16 @@
 
 				<div class="row">
 					<div class="col-2">
-						<span th:text="${tweet.poster.username}"> </span>
+						<a th:href="@{/accounts/{username}(username=${account.username})}">
+							<span th:text="${account.username}"> un </span>
+						</a>
 					</div>
 					<div class="col-10">
 						<div class="row">
-							<span th:text="${tweet.poster.username}"> text </span>
+							<a
+								th:href="@{/accounts/{username}(username=${account.username})}">
+								<span th:text="${account.username}"> un </span>
+							</a>
 						</div>
 						<div class="row">
 							<span th:text="${tweet.text}"> text </span>
@@ -77,7 +82,9 @@
 								</p>
 							</div>
 							<div class="col-6">
-								likes <span th:text="${tweet.likes.size()}"> text </span>
+								<button type="button" class="btn btn-primary btn-sm">
+									Like <span th:text="${tweet.likes.size()}"> likes </span>
+								</button>
 							</div>
 						</div>
 
@@ -91,26 +98,45 @@
 
 	</div>
 
-	<!-- 
-		<ol>
-			<li th:each="tweet : ${tweets}">
-			
-<div>
-			<span th:text="${tweet.text}">tweetti</span>
-			<span th:text="${tweet.likes}"> likes</span>
-			
-				<ol>
-					<li th:each="comment : ${tweet.comments}">
-						<span th:text="${comment.poster.username}"> username</span>
-						<span th:text="${comment.text}"> comment text</span>
-					</li>
-				</ol>
-	</div>		
 
+	<div th:fragment="testijuttu(tweets)">
 
-			</li>
-		</ol>
-		 -->
+		<div th:each="tweet: ${tweets}">
+			<div class="container">
+				<div class="row">
+					<div class="col-2">
+						<a th:href="@{/accounts/{username}(username=${account.username})}">
+							<span th:text="${account.username}"> un </span>
+						</a>
+					</div>
+					<div class="col-10">
+						<div class="row">
+							<a
+								th:href="@{/accounts/{username}(username=${account.username})}">
+								<span th:text="${account.username}"> un </span>
+							</a>
+						</div>
+						<div class="row">
+							<span th:text="${tweet.text}"> text </span>
+						</div>
+						<div class="row">
+							<div class="col-6">
+								<p>
+									comments <span th:text="${tweet.comments.size()}"> text
+									</span>
+								</p>
+							</div>
+							<div class="col-6">
+								<button type="button" class="btn btn-primary btn-sm">
+									Like <span th:text="${tweet.likes.size()}"> likes </span>
+								</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 
@@ -138,9 +164,10 @@
 		</span>
 	</div>
 
+	<div th:fragment="blokked">Blocked users</div>
 
 	<div th:fragment="gallery">
-		<p>Galleria</p>
+		<p>Mun galleria</p>
 	</div>
 
 

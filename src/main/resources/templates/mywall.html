@@ -9,8 +9,6 @@
 
 	<div class="container">
 
-
-
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -26,21 +24,18 @@
 					</h1>
 
 					<div th:replace="fragments/layout :: posttweet"></div>
-					<div th:replace="fragments/layout :: tweetlist"></div>
+					<div th:replace="fragments/layout :: tweetlist(tweets=${tweets})"></div>
 
 				</div>
 				<div class="col-4">
 					<p>MY STUFF</p>
 					<div th:replace="fragments/layout :: following"></div>
 					<div th:replace="fragments/layout :: followers"></div>
+					<div th:replace="fragments/layout :: blokked"></div>
 					<div th:replace="fragments/layout :: gallery"></div>
 				</div>
 			</div>
 		</div>
-
-
-
-
 
 	</div>
 
