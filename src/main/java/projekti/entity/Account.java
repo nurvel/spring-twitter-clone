@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,8 +24,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(
-		exclude = { "tweets", "password", "authorities", "likedTweets", "comments", "parent", "followers", "following" })
+@ToString(exclude = { "tweets", "password", "authorities", "likedTweets", "comments", "followers", "follows" })
 public class Account extends AbstractPersistable<Long> {
 
 	private String username;
@@ -41,19 +42,11 @@ public class Account extends AbstractPersistable<Long> {
 	@ManyToMany(mappedBy = "likes")
 	private List<Tweet> likedTweets = new ArrayList<>();
 
-	@ElementCollection(targetClass = String.class)
-	private Set<String> followers = new HashSet<>(); // HOX: jostain syystä lisätään 2 kertaa
+	@OneToMany(mappedBy = "follower", fetch = FetchType.LAZY)
+	private List<Follower> follows = new ArrayList<>(); // new HashSet<>();
 
-	@ElementCollection(targetClass = String.class)
-	private Set<String> following = new HashSet<>(); // HOX: jostain syystä lisätään 2 kertaa
-
-	
-//	@ManyToOne
-//	private Account parent = this;
-//	@OneToMany(mappedBy = "parent")
-//	private List<Account> following = new ArrayList<>();
-//	@OneToMany(mappedBy = "parent")
-//	private List<Account> followers = new ArrayList<>();
+	@OneToMany(mappedBy = "followed", fetch = FetchType.LAZY)
+	private List<Follower> followers = new ArrayList<>();
 
 	// private List<Account> blockedUsers = new ArrayList<>(); TODO: 2-way
 

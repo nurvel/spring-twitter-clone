@@ -22,18 +22,22 @@
 	</div>
 
 
-	<span> I am following:
+	<span> I am following: <span th:text=${account.follows.size()}></span>
+
 		<ol>
-			<li th:each="username : ${account.following}"><span
-				th:text="${username}"> username</span>
+			<li th:each="foo : ${account.follows}"><span
+				th:text="${foo.followed.username}"> username</span>
 		</ol>
 	</span>
 
 
-	<span> Are following me:
+
+	<span> Are following me: <span
+		th:text=${account.followers.size()}></span>
+
 		<ol>
-			<li th:each="username : ${account.followers}"><span
-				th:text="${username}"> username</span>
+			<li th:each="fuu : ${account.followers}"><span
+				th:text="${fuu.follower.username}"> username</span>
 		</ol>
 	</span>
 
@@ -48,8 +52,8 @@
 	</ol>
 
 
-
 	</ol>
+
 
 
 </body>

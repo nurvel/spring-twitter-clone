@@ -26,7 +26,14 @@ public class MyWallController {
 
 		Account account = accountService.getAuthenticatedAcccount();
 
+		// System.out.println(account.toString());
+
 		List<Tweet> myWallTweets = myWallService.getMyWall();
+//		System.out.println("KOKO:  " + myWallTweets.size());
+//		System.out.println("TWEETS:  " + myWallTweets.toString());
+//		System.out.println("ACCOUNT" + account.toString());
+//		System.out.println("ACCOUNT" + account.getFollowers().toString());
+
 		model.addAttribute("tweets", myWallTweets);
 		model.addAttribute("account", account);
 

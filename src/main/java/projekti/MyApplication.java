@@ -12,6 +12,7 @@ import projekti.entity.Account;
 import projekti.entity.Tweet;
 import projekti.repository.AccountRepository;
 import projekti.service.AccountService;
+import projekti.service.FollowerService;
 import projekti.service.TweetService;
 
 @SpringBootApplication
@@ -40,20 +41,30 @@ public class MyApplication {
 		Account obamaAccount = accountService.createAccout("obama", "password");
 		Account niiloAccount = accountService.createAccout("niilo", "password");
 
-		trumpAccount.getFollowers().add(obamaAccount.getUsername());
-		obamaAccount.getFollowing().add(trumpAccount.getUsername());
-		
-		trumpAccount.getFollowers().add(niiloAccount.getUsername());
-		niiloAccount.getFollowing().add(trumpAccount.getUsername());
-		
-		obamaAccount.getFollowers().add(trumpAccount.getUsername());
-		trumpAccount.getFollowing().add(obamaAccount.getUsername());
-		obamaAccount.getFollowers().add(niiloAccount.getUsername());
-		niiloAccount.getFollowing().add(obamaAccount.getUsername());
-
 		accountRepository.save(trumpAccount);
 		accountRepository.save(obamaAccount);
 		accountRepository.save(niiloAccount);
+
+		
+		System.out.println("BEFORE---------------------------------");
+		accountService.startFollow(trumpAccount, obamaAccount);
+		accountService.startFollow(trumpAccount, niiloAccount);
+//		accountService.startFollow(obamaAccount, trumpAccount);
+		accountService.startFollow(obamaAccount, niiloAccount);
+//		accountService.startFollow(niiloAccount, trumpAccount);
+		System.out.println("AFTER---------------------------------");
+
+//		trumpAccount.getFollowers().add(obamaAccount.getUsername());
+//		obamaAccount.getFollowing().add(trumpAccount.getUsername());
+//		
+//		trumpAccount.getFollowers().add(niiloAccount.getUsername());
+//		niiloAccount.getFollowing().add(trumpAccount.getUsername());
+//		
+//		obamaAccount.getFollowers().add(trumpAccount.getUsername());
+//		trumpAccount.getFollowing().add(obamaAccount.getUsername());
+//		obamaAccount.getFollowers().add(niiloAccount.getUsername());
+//		niiloAccount.getFollowing().add(obamaAccount.getUsername());
+
 
 		Tweet trumpt1 = tweetService.addTweet("Make Amurica great again", trumpAccount);
 		Tweet trumpt2 = tweetService.addTweet("Mä meen golffaamaan NY!", trumpAccount);
