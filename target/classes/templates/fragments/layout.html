@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head(title)" lang="en">
+<meta charset="UTF-8" />
+<title th:text="${title}">Otsikko</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+
+	<header th:fragment="header">
+		<p>TWEETTER</p>
+		<p>ETSI KÄYTTÄJÄ | HOME |LOGOUT</p>
+	</header>
+
+
+
+	<div th:fragment="posttweet">
+		<div>
+			<span>Add a new tweet</span>
+			<form method="POST" th:action="@{/tweets/new}">
+				<input type="text" name="tweetText"> <input type="submit"
+					value="Tweet" />
+			</form>
+		</div>
+	</div>
+
+
+	<div th:fragment="tweetlist">
+		<ol>
+			<li th:each="tweet : ${tweets}"><span th:text="${tweet.text}">
+					tweetti</span> <span th:text="${tweet.likes}"> likes</span>
+				<ol>
+					<li th:each="comment : ${tweet.comments}"><span
+						th:text="${comment.poster.username}"> comment</span> <span>
+					</span><span th:text="${comment.text}"> comment</span></li>
+				</ol></li>
+		</ol>
+	</div>
+
+
+
+
+
+	<div th:fragment="following">
+		<span> I am following: <span th:text=${account.follows.size()}></span>
+			<ol>
+				<li th:each="foo : ${account.follows}"><span
+					th:text="${foo.followed.username}"> username</span>
+			</ol>
+		</span>
+	</div>
+
+	<div th:fragment="followers">
+		<span> Are following me: <span
+			th:text=${account.followers.size()}></span>
+
+			<ol>
+				<li th:each="fuu : ${account.followers}"><span
+					th:text="${fuu.follower.username}"> username</span>
+			</ol>
+		</span>
+	</div>
+
+
+	<div th:fragment="gallery">
+		<p>Galleria</p>
+	</div>
+
+
+
+</body>
+</html>
