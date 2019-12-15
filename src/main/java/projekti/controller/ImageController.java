@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import projekti.entity.Account;
+import projekti.entity.Image;
 import projekti.entity.ImageFile;
 import projekti.service.AccountService;
 import projekti.service.ImageService;
@@ -46,17 +47,16 @@ public class ImageController {
 		}
 
 		return "redirect:/mywall";
-		//return account == null ? "redirect:/" : "mywall";
+		// return account == null ? "redirect:/" : "mywall";
 	}
 
-	@GetMapping(path ="/image/{id}", produces= "image/png")
+	@GetMapping(path = "/image/{id}", produces = "image/png")
 	@ResponseBody
-	public byte[] get (@PathVariable Long id) {
-		ImageFile fo = imageService.getImageFile(id);
-		return fo.getContent();
+	public byte[] get(@PathVariable Long id) {
+		Image img = imageService.getImage(id);
+		return img.getImageFile().getContent();
 	}
-	
-	
+
 	// delete
 	// set to profile img
 

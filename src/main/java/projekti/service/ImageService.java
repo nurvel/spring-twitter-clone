@@ -23,11 +23,10 @@ public class ImageService {
 	@Autowired
 	private ImageRepository imageRepository;
 
-	
 	public Image saveImage(MultipartFile file, Account account) throws IOException {
-		
+
 		// TODO: MAX images 10
-		
+
 		Image image = new Image();
 
 		if (file.getContentType().equals("image/gif")) {
@@ -45,9 +44,8 @@ public class ImageService {
 		return image;
 	}
 
-
-	public ImageFile getImageFile(Long id) {
-		return imageRepository.getOne(id).getImageFile();
+	public Image getImage(Long id) {
+		return imageRepository.getOne(id);
 	}
 
 }

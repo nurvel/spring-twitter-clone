@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import projekti.entity.Account;
 import projekti.service.AccountService;
+import projekti.service.ImageService;
 
 @Controller
 public class AccountController {
@@ -21,6 +22,10 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 
+	@Autowired
+	private ImageService imageService;
+
+	
 	@GetMapping("/accounts")
 	public String list(Model model) {
 		List<Account> as = accountService.findAll();
@@ -65,7 +70,8 @@ public class AccountController {
 		if (a == null)
 			return "redirect:/accounts";
 
-		model.addAttribute("imageId", id);
+		
+		model.addAttribute("image", imageService.getImage(id));
 		model.addAttribute("account", accountService.findAccount(username));
 		return "images";
 	}
