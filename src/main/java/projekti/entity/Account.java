@@ -53,6 +53,10 @@ public class Account extends AbstractPersistable<Long> {
 	@OneToOne
 	private Image profileImage; // TODO: reference of profile IGM
 
+	@ManyToMany(mappedBy = "likes")
+	private List<Image> likedImages = new ArrayList<>();
+
+	
 	// private List<Account> blockedUsers = new ArrayList<>(); TODO: 2-way
 
 	public Account(String username, String password, List<String> authorities) {

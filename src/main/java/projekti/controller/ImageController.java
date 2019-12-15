@@ -61,12 +61,19 @@ public class ImageController {
 	}
 
 	@PostMapping("image/comment")
-	public String commentImage(HttpServletRequest request,@RequestParam Long imageId, @RequestParam String commentText) {
+	public String commentImage(HttpServletRequest request, @RequestParam Long id, @RequestParam String commentText) {
 		Account account = accountService.getAuthenticatedAcccount();
-		
-		imageService.commentImage(imageId, account, commentText);
-		
-		
+
+		imageService.commentImage(id, account, commentText);
+
+		String referer = request.getHeader("Referer");
+		return "redirect:" + referer;
+	}
+
+	@PostMapping("image/like")
+	public String likeImage(HttpServletRequest request, @RequestParam Long id) {
+		Account account = accountService.getAuthenticatedAcccount();
+		imageService.likeImage(id, account);
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;
 	}

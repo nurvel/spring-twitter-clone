@@ -53,8 +53,8 @@ public class ImageService {
 		return imageRepository.getOne(id);
 	}
 
-	public void commentImage(Long imageId, Account account, String commentText) {
-		Image image = imageRepository.getOne(imageId);
+	public void commentImage(Long id, Account account, String commentText) {
+		Image image = imageRepository.getOne(id);
 
 		Comment comment = new Comment();
 		comment.setText(commentText);
@@ -62,6 +62,19 @@ public class ImageService {
 		comment.setImage(image);
 
 		commentRepository.save(comment);
+
+	}
+
+	public void likeImage(Long id, Account account) {
+		Image image = imageRepository.getOne(id);
+
+		if (image.getLikes().contains(account)) {
+			image.getLikes().remove(account);
+		} else {
+			image.getLikes().add(account);
+		}
+
+		imageRepository.save(image);
 
 	}
 

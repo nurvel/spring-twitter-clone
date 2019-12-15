@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -19,23 +22,22 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 public class Image extends AbstractPersistable<Long> {
-	
 
 	@OneToOne //
 	private ImageFile imageFile;
-	
+
 //	private LocalDateTime postTime;
 
-	
 	@ManyToOne
 	private Account account;
-	
+
 	// toimiiko sama?
-	@OneToMany (mappedBy = "image")
+	@OneToMany(mappedBy = "image")
 	private List<Comment> comments = new ArrayList<>();
 
-	
-	
-	
+	@ManyToMany
+	@JoinTable(name = "image_like", joinColumns = @JoinColumn(name = "image_id"), inverseJoinColumns = @JoinColumn(
+			name = "account_id"))
+	private List<Account> likes = new ArrayList<>();
 
 }
