@@ -1,5 +1,6 @@
 package projekti.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +73,7 @@ public class AccountService {
 		Follower f1 = new Follower();
 		f1.setFollowed(target);
 		f1.setFollower(follower);
+		f1.setLocalDateTime(LocalDateTime.now());
 		followerRepository.save(f1);
 	}
 

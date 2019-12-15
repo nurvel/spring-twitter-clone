@@ -34,7 +34,6 @@ public class Image extends AbstractPersistable<Long> {
 
 	private String caption;
 
-	// toimiiko sama?
 	@OneToMany(mappedBy = "image")
 	private List<Comment> comments = new ArrayList<>();
 

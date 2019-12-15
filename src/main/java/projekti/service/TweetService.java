@@ -1,5 +1,6 @@
 package projekti.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class TweetService {
 
 		Tweet tweet = new Tweet();
 		tweet.setText(tweetText);
-		// tweet.setPostTime();
+		tweet.setPostTime(LocalDateTime.now());
 		tweet.setPoster(account);
 
 		return tweetRepository.save(tweet);
@@ -60,11 +61,8 @@ public class TweetService {
 		comment.setText(commentText);
 		comment.setPoster(account);
 		comment.setTweet(tweet);
-		// comment.setPostTime(postTime);
+		comment.setPostTime(LocalDateTime.now());
 
-		System.out.println("MY COMMENT " + comment.toString());
-
-		// tweet.getComments().add(comment);
 		commentRepository.save(comment);
 	}
 

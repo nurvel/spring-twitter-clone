@@ -3495,3 +3495,6 @@ call next value for hibernate_sequence [90036-197]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+2019-12-15 23:08:38 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "FOLLOWER[*]"; expected "FROM, {"; SQL statement:
+FOLLOWER [42001-197]

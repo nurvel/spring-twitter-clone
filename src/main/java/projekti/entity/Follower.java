@@ -1,12 +1,12 @@
 package projekti.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,11 +28,7 @@ public class Follower extends AbstractPersistable<Long> {
 
 	// boolean blokked?
 	
-//	private LocalDateTime interactionTimestamp;
+	private LocalDateTime localDateTime;
 
-//	public Follower(Account account) {
-//		this.account = account;
-////		this.interactionTimestamp = 
-//	}
 
 }
