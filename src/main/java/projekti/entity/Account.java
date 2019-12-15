@@ -24,7 +24,7 @@ import lombok.ToString;
 @ToString(exclude = { "tweets", "password", "authorities", "likedTweets", "comments", "followers", "follows" })
 public class Account extends AbstractPersistable<Long> {
 
-	// private String name; // HOX: seach by name
+	private String name;
 	private String username;
 	private String password;
 

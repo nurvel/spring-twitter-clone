@@ -37,9 +37,9 @@ public class MyApplication {
 
 		System.out.println("Init some data");
 
-		Account trumpAccount = accountService.createAccout("trump", "password");
-		Account obamaAccount = accountService.createAccout("obama", "password");
-		Account niiloAccount = accountService.createAccout("niilo", "password");
+		Account trumpAccount = accountService.createAccout("trump", "password", "Donald Trump");
+		Account obamaAccount = accountService.createAccout("obama", "password", "Barak Obama");
+		Account niiloAccount = accountService.createAccout("niilo", "password", "Niilo Niinistö");
 
 		accountRepository.save(trumpAccount);
 		accountRepository.save(obamaAccount);

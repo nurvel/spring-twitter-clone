@@ -43,9 +43,10 @@ public class AccountService {
 		return accountRepository.findAll();
 	}
 
-	public Account createAccout(String username, String password) {
+	public Account createAccout(String username, String password, String name) {
 		List<String> authorities = new ArrayList<String>();
 		Account a = new Account(username, passwordEncoder.encode(password), authorities);
+		a.setName(name);
 		return accountRepository.save(a);
 	}
 
