@@ -19,7 +19,7 @@ public class ImageFile extends AbstractPersistable<Long> {
 	@Lob
 	private byte[] content;
 
-	@OneToOne
+	@OneToOne(mappedBy ="imageFile")
 	Image image;
 
 }

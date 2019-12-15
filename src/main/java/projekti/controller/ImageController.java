@@ -37,10 +37,12 @@ public class ImageController {
 			imageService.saveImage(file, account);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.out.println("ERRORII PUKAAA");
 			e.printStackTrace();
 		}
 
-		return account == null ? "redirect:/" : "mywall";
+		return "redirect:/mywall";
+		//return account == null ? "redirect:/" : "mywall";
 	}
 
 	// upload

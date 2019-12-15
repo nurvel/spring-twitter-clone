@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Image extends AbstractPersistable<Long> {
 	
 
-	@OneToOne
+	@OneToOne //
 	private ImageFile imageFile;
 	
 //	private LocalDateTime postTime;

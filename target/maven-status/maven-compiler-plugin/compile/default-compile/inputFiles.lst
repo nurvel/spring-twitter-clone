@@ -21,6 +21,7 @@
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/service/TweetService.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/service/MyWallService.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/controller/CustomErrorController.java
+/home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/repository/ImageRepository.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/repository/ImageFileRepository.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/controller/TweetController.java
 /home/vellu/NetBeansProjects/mooc-wepa-s19-projekti/wepa_Projekti/src/main/java/projekti/controller/AccountController.java
