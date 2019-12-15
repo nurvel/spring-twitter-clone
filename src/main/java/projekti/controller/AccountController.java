@@ -43,6 +43,14 @@ public class AccountController {
 		return "account";
 	}
 
+	@PostMapping("/accounts/search")
+	public String searchUsers(Model model, @RequestParam String searchString) {
+		List<Account> accounts = accountService.searchAccounts(searchString);
+
+		model.addAttribute("accounts", accounts);
+		return "search";
+	}
+
 	@PostMapping("/accounts")
 	public String add(@RequestParam String username, @RequestParam String password, @RequestParam String name) {
 

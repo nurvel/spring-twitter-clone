@@ -86,4 +86,11 @@ public class AccountService {
 		accountRepository.save(account);
 	}
 
+	public List<Account> searchAccounts(String searchString) {
+		System.out.println("search with: " + searchString);
+		List<Account> accounts = accountRepository.findWithName(searchString);
+		System.out.println(accounts.size());
+		return accounts;
+	}
+
 }
