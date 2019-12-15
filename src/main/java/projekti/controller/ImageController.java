@@ -54,7 +54,6 @@ public class ImageController {
 	public byte[] get (@PathVariable Long id) {
 		ImageFile fo = imageService.getImageFile(id);
 		return fo.getContent();
-		//return null;
 	}
 	
 	

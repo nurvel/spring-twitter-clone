@@ -52,10 +52,22 @@ public class AccountController {
 
 	@PostMapping("/accounts/follow")
 	public String add(HttpServletRequest request, @RequestParam String followUsername) {
-		//accountService.startFollow(followUsername); // FIX method
+		// accountService.startFollow(followUsername); // FIX method
 
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;
+	}
+
+	@GetMapping("/accounts/{username}/images/{id}")
+	public String accountImages(Model model, @PathVariable String username, @PathVariable Long id) {
+		Account a = accountService.findAccount(username);
+
+		if (a == null)
+			return "redirect:/accounts";
+
+		model.addAttribute("imageId", id);
+		model.addAttribute("account", accountService.findAccount(username));
+		return "images";
 	}
 
 }

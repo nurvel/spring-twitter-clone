@@ -23,7 +23,13 @@
 					<h1>
 						Home of <span th:text=${account.username}></span>
 					</h1>
+					<!-- 
 					<div th:replace="fragments/layout :: tweetlist(tweets=${account.tweets})"></div>
+					 -->
+
+					<div>
+						<img th:src="@{/image/{id}(id=${imageId})}" class="img-fluid" />
+					</div>
 
 				</div>
 				<div class="col-4">

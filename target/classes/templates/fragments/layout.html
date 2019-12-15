@@ -62,7 +62,7 @@
 	<div th:fragment="tweet(tweet)">
 		<div class="container">
 
-			<div class="row">
+			<div class="row  py-2">
 				<div class="col-2">
 					<img width="60" height="60" src="/images/trump.jpg"
 						class="rounded-circle" alt="Pressa">
@@ -113,33 +113,6 @@
 
 			</div>
 
-			<!-- 
-				<div class="col-10">
-					<div class="row">
-						<a
-							th:href="@{/accounts/{username}(username=${tweet.poster.username})}">
-							<span th:text="${tweet.poster.username}"> un </span>
-						</a>
-					</div>
-					<div class="row">
-						<span th:text="${tweet.text}"> text </span>
-					</div>
-					<div class="row">
-						<div class="col-6">
-							<p>
-								comments <span th:text="${tweet.comments.size()}"> text </span>
-							</p>
-						</div>
-						<div class="col-6">
-							<button type="button" class="btn btn-primary btn-sm">
-								Like <span th:text="${tweet.likes.size()}"> likes </span>
-							</button>
-						</div>
-					</div>
-
-				</div>
-				 -->
-
 		</div>
 	</div>
 
@@ -176,13 +149,18 @@
 		<p>Mun galleria</p>
 		<span th:text=${account.images.size()}> size of gallery</span>
 
-		<div th:each="image: ${account.images}">
-			<img th:src="@{/image/{id}(id=${image.id})}"/>
+		<div>
+			<div th:each="image: ${account.images}">
+			<a th:href="@{/accounts/{username}/images/{id}(username=${account.username}, id=${image.id})}">
+			
+				<img th:src="@{/image/{id}(id=${image.id})}"
+					class="img-thumbnail float-left" width="100" />
+					</a>
+			</div>
 		</div>
 
 
-
-		<p>Postaa galleriaan</p>
+		<div>Postaa galleriaan</div>
 		<form method="POST" th:action="@{/image}"
 			enctype="multipart/form-data">
 			<input type="file" name="file" id="file" /> <input type="submit"
@@ -190,7 +168,7 @@
 		</form>
 
 	</div>
-
+image
 
 
 
