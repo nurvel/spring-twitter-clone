@@ -49,9 +49,9 @@
 
 	<div th:fragment="tweetlist(tweets)">
 		<div th:each="tweet: ${tweets}">
-		
-		<div th:replace="fragments/layout :: tweet(tweet=${tweet})"></div>
-		
+
+			<div th:replace="fragments/layout :: tweet(tweet=${tweet})"></div>
+
 			<!--  
 			<div class="container">
 
@@ -100,10 +100,14 @@
 
 			<div class="row">
 				<div class="col-2">
+					<img width="65" height="65" src="/images/trump.jpg"
+						class="rounded-circle" alt="Pressa">
+					<!--  
 					<a
 						th:href="@{/accounts/{username}(username=${tweet.poster.username})}">
 						<span th:text="${tweet.poster.username}"> un </span>
 					</a>
+					-->
 				</div>
 				<div class="col-10">
 					<div class="row">
