@@ -31,6 +31,11 @@
 						<img th:src="@{/image/{id}(id=${image.id})}" class="img-fluid" />
 					</div>
 
+					<form method="POST" th:action="@{/image/setprofile}">
+						<input type="hidden" name="id" th:value="${image.id}">
+						<input type="submit" value="Set as profile image" />
+					</form>
+
 					<p>Comments:</p>
 					<span th:text=${image.comments.size()}> size of gallery</span> <span
 						th:text=${image.likes.size()}> size of gallery</span>

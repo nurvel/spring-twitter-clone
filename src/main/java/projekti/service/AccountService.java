@@ -8,18 +8,22 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import projekti.entity.Account;
 import projekti.entity.Follower;
+import projekti.entity.Image;
 import projekti.repository.AccountRepository;
 import projekti.repository.FollowerRepository;
+import projekti.repository.ImageRepository;
 
 @Service
 public class AccountService {
 
 	@Autowired
 	private AccountRepository accountRepository;
+
+	@Autowired
+	private ImageRepository imageRepository;
 
 //	@Autowired
 //	private FollowerService followerService;
@@ -76,6 +80,12 @@ public class AccountService {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		return accountRepository.findByUsername(username);
+	}
+
+	public void setProfileImage(Account account, Long id) {
+		Image image = imageRepository.getOne(id);
+		account.setProfileImage(image);
+		accountRepository.save(account);
 	}
 
 }

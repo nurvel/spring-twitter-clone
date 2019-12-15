@@ -29,13 +29,6 @@ public class ImageController {
 	@Autowired
 	private ImageService imageService;
 
-//	// Tää menee muihin controllereihin henk. koht
-//	@GetMapping("/images")
-//	public String getImages(Model model) {
-//		//List<Image> images = imageService.findAll();
-//		return null; // TODO: html file
-//	}
-
 	@PostMapping("image")
 	public String uploadImage(@RequestParam("file") MultipartFile file) {
 
@@ -78,10 +71,16 @@ public class ImageController {
 		return "redirect:" + referer;
 	}
 
+	@PostMapping("image/setprofile")
+	public String setProfileImage(HttpServletRequest request, @RequestParam Long id) {
+		Account account = accountService.getAuthenticatedAcccount();
+		accountService.setProfileImage(account, id);
+
+		String referer = request.getHeader("Referer");
+		return "redirect:" + referer;
+	}
+
 	// delete
 	// set to profile img
-
-	// comment
-	// like
 
 }

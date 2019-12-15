@@ -64,8 +64,18 @@
 
 			<div class="row  py-2">
 				<div class="col-2">
-					<img width="60" height="60" src="/images/trump.jpg"
-						class="rounded-circle" alt="Pressa">
+
+					<div th:if="${tweet.poster.profileImage == null}">
+						<img width="60" height="60" src="/images/default-profile.jpg"
+							class="rounded-circle">
+					</div>
+					<div th:if="${tweet.poster.profileImage != null}">
+						<img width="60" height="60" th:src="@{/image/{id}(id=${tweet.poster.profileImage.id})}"
+							class="rounded-circle">
+					</div>
+
+
+
 				</div>
 				<div class="col-10">
 					<div class="container">
