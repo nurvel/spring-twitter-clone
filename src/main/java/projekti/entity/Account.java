@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -23,9 +24,10 @@ import lombok.ToString;
 @ToString(exclude = { "tweets", "password", "authorities", "likedTweets", "comments", "followers", "follows" })
 public class Account extends AbstractPersistable<Long> {
 
-	//private String name; // HOX: seach by name
+	// private String name; // HOX: seach by name
 	private String username;
 	private String password;
+
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> authorities;
@@ -44,6 +46,12 @@ public class Account extends AbstractPersistable<Long> {
 
 	@OneToMany(mappedBy = "followed", fetch = FetchType.LAZY)
 	private List<Follower> followers = new ArrayList<>();
+
+	@OneToMany(mappedBy = "account")
+	private List<Image> images = new ArrayList<>();
+
+	@OneToOne
+	private Image profileImage; // TODO: reference of profile IGM
 
 	// private List<Account> blockedUsers = new ArrayList<>(); TODO: 2-way
 

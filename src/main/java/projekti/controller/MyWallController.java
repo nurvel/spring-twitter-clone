@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import projekti.entity.Account;
 import projekti.entity.Tweet;
 import projekti.service.AccountService;
+import projekti.service.ImageService;
 import projekti.service.MyWallService;
 
 @Controller
@@ -20,7 +21,7 @@ public class MyWallController {
 
 	@Autowired
 	private MyWallService myWallService;
-
+	
 	@GetMapping("/mywall")
 	public String list(Model model) {
 
@@ -28,7 +29,7 @@ public class MyWallController {
 
 		// System.out.println(account.toString());
 
-		List<Tweet> myWallTweets = myWallService.getMyWall();
+		List<Tweet> myWallTweets = myWallService.getMyWall(); // TODO: tää AccountServiceen?
 //		System.out.println("KOKO:  " + myWallTweets.size());
 //		System.out.println("TWEETS:  " + myWallTweets.toString());
 //		System.out.println("ACCOUNT" + account.toString());

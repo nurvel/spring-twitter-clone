@@ -66,17 +66,9 @@ public class AccountService {
 	// FOR INIT DB
 	public void startFollow(Account target, Account follower) {
 		Follower f1 = new Follower();
-		
 		f1.setFollowed(target);
 		f1.setFollower(follower);
-//		Follower f2 = new Follower(account);
-
 		followerRepository.save(f1);
-//		followerRepository.save(f2);
-//		account.getFollows().add(f1);
-//		getsFollowed.getFollowers().add(f2);
-//		accountRepository.save(account);
-//		accountRepository.save(getsFollowed);
 	}
 
 	// TODO: Throw exception?
