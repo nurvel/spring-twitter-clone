@@ -24,6 +24,10 @@ public class TweetService {
 		return tweetRepository.findAll();
 	}
 
+	public Tweet findOne(Long id) {
+		return tweetRepository.getOne(id);
+	}
+
 	public Tweet addTweet(String tweetText, Account account) {
 
 		Tweet tweet = new Tweet();

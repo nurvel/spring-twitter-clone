@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,6 +31,14 @@ public class TweetController {
 		List<Tweet> tweets = tweetService.findAll();
 		model.addAttribute("tweets", tweets);
 		return "tweets";
+	}
+
+	@GetMapping("/tweets/{id}")
+	public String oneTweets(Model model, @PathVariable Long id) {
+		Tweet tweet = tweetService.findOne(id);
+		model.addAttribute("tweet", tweet);
+		System.out.println("JAUSAAAAAA");
+		return "tweet";
 	}
 
 	@PostMapping("/tweets/new")

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/layout :: head(title=${tweet.poster.username})"
+	lang="en">
+<meta charset="UTF-8" />
+<title>Account page</title>
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav th:replace="fragments/layout :: header"></nav>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-8">
+
+					<h1>
+						Conversation to tweet <span th:text=${tweet.id}></span>
+					</h1>
+
+					<div th:replace="fragments/layout :: tweet(tweet=${tweet})"></div>
+					<div th:replace="fragments/layout :: tweetcomments(tweet=${tweet})"></div>
+
+				</div>
+
+				<div class="col-4">
+					<p>ACCOUNTS STUFF</p>
+					<div th:replace="fragments/layout :: following"></div>
+					<div th:replace="fragments/layout :: followers"></div>
+					<div th:replace="fragments/layout :: blokked"></div>
+					<div th:replace="fragments/layout :: gallery"></div>
+				</div>
+			</div>
+
+		</div>
+</body>
+</html>
