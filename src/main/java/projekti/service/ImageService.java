@@ -25,26 +25,29 @@ public class ImageService {
 
 	
 	public Image saveImage(MultipartFile file, Account account) throws IOException {
+		
+		// TODO: MAX images 10
+		
 		Image image = new Image();
 
 		if (file.getContentType().equals("image/gif")) {
 
-
-			
 			ImageFile fo = new ImageFile();
 			fo.setContent(file.getBytes());
-//			fo.setImage(image);
 			imageFileRepository.save(fo);
 
 			image.setAccount(account);
 			image.setImageFile(fo);
 			imageRepository.save(image);
 
-			
-			
 		}
 
 		return image;
+	}
+
+
+	public ImageFile getImageFile(Long id) {
+		return imageRepository.getOne(id).getImageFile();
 	}
 
 }

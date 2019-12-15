@@ -176,8 +176,15 @@
 		<p>Mun galleria</p>
 		<span th:text=${account.images.size()}> size of gallery</span>
 
+		<div th:each="image: ${account.images}">
+			<img th:src="@{/image/{id}(id=${image.id})}"/>
+		</div>
+
+
+
 		<p>Postaa galleriaan</p>
-		<form method="POST" th:action="@{/image}" enctype="multipart/form-data">
+		<form method="POST" th:action="@{/image}"
+			enctype="multipart/form-data">
 			<input type="file" name="file" id="file" /> <input type="submit"
 				value="Add!" />
 		</form>
