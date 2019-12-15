@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import projekti.entity.Account;
+import projekti.entity.Comment;
 import projekti.entity.Image;
 import projekti.entity.ImageFile;
+import projekti.repository.CommentRepository;
 import projekti.repository.ImageFileRepository;
 import projekti.repository.ImageRepository;
 
@@ -22,6 +24,9 @@ public class ImageService {
 
 	@Autowired
 	private ImageRepository imageRepository;
+
+	@Autowired
+	CommentRepository commentRepository;
 
 	public Image saveImage(MultipartFile file, Account account) throws IOException {
 
@@ -46,6 +51,18 @@ public class ImageService {
 
 	public Image getImage(Long id) {
 		return imageRepository.getOne(id);
+	}
+
+	public void commentImage(Long imageId, Account account, String commentText) {
+		Image image = imageRepository.getOne(imageId);
+
+		Comment comment = new Comment();
+		comment.setText(commentText);
+		comment.setPoster(account);
+		comment.setImage(image);
+
+		commentRepository.save(comment);
+
 	}
 
 }

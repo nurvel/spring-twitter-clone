@@ -2,9 +2,12 @@ package projekti.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import projekti.entity.Account;
+import projekti.entity.Comment;
 import projekti.entity.Image;
-import projekti.entity.ImageFile;
 import projekti.service.AccountService;
 import projekti.service.ImageService;
 
@@ -55,6 +58,17 @@ public class ImageController {
 	public byte[] get(@PathVariable Long id) {
 		Image img = imageService.getImage(id);
 		return img.getImageFile().getContent();
+	}
+
+	@PostMapping("image/comment")
+	public String commentImage(HttpServletRequest request,@RequestParam Long imageId, @RequestParam String commentText) {
+		Account account = accountService.getAuthenticatedAcccount();
+		
+		imageService.commentImage(imageId, account, commentText);
+		
+		
+		String referer = request.getHeader("Referer");
+		return "redirect:" + referer;
 	}
 
 	// delete

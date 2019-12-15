@@ -28,4 +28,7 @@ public class Comment extends AbstractPersistable<Long> {
 	@ManyToOne
 	private Tweet tweet;
 
+	@ManyToOne
+	private Image image;
+
 }
