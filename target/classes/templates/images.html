@@ -31,10 +31,18 @@
 						<img th:src="@{/image/{id}(id=${image.id})}" class="img-fluid" />
 					</div>
 
-					<form method="POST" th:action="@{/image/setprofile}">
-						<input type="hidden" name="id" th:value="${image.id}">
-						<input type="submit" value="Set as profile image" />
-					</form>
+					<span th:text=${account.username}></span> <span
+						th:text=${image.account.username}></span> <span
+						th:text="${#authentication.getPrincipal().getUsername()}"></span>
+
+					<div th:if="${#authentication.getPrincipal().getUsername() == image.account.username}">
+						<form method="POST" th:action="@{/image/setprofile}">
+							<input type="hidden" name="id" th:value="${image.id}"> <input
+								type="submit" value="Set as profile image" />
+						</form>
+					</div>
+
+
 
 					<p>Comments:</p>
 					<span th:text=${image.comments.size()}> size of gallery</span> <span
