@@ -79,4 +79,14 @@ public class ImageService {
 
 	}
 
+	public void deleteImage(Long id, Account account) {
+		Image image = imageRepository.getOne(id);
+
+		if (image.getAccount() == account) {
+			//imageFileRepository.deleteById(image.getImageFile().getId());
+			imageRepository.deleteById(id);
+		}
+
+	}
+
 }

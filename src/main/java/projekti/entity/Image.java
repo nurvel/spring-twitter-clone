@@ -3,6 +3,7 @@ package projekti.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -23,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Image extends AbstractPersistable<Long> {
 
-	@OneToOne //
+	@OneToOne ( cascade = CascadeType.REMOVE)
 	private ImageFile imageFile;
 
 //	private LocalDateTime postTime;

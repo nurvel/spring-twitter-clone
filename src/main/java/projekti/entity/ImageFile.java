@@ -1,5 +1,6 @@
 package projekti.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
@@ -19,7 +20,7 @@ public class ImageFile extends AbstractPersistable<Long> {
 	@Lob
 	private byte[] content;
 
-	@OneToOne(mappedBy ="imageFile")
+	@OneToOne(mappedBy ="imageFile",  cascade = CascadeType.REMOVE)
 	Image image;
 
 }
