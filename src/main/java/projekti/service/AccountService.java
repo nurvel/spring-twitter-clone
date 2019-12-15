@@ -50,24 +50,19 @@ public class AccountService {
 		return accountRepository.save(a);
 	}
 
-//	public void startFollow(String followUsername) {
-//		Account account = getAuthenticatedAcccount();
-//		Account getsFollowed = findAccount(followUsername);
-//
-//		if (account == getsFollowed)
-//			return;
-//
-//		Follower f1 = new Follower(getsFollowed);
-//		Follower f2 = new Follower(account);
-//		followerRepository.save(f1);
-//		followerRepository.save(f2);
-//
-//		account.getFollows().add(f1);
-//		getsFollowed.getFollowers().add(f2);
-//		accountRepository.save(account);
-//		accountRepository.save(getsFollowed);
-//
-//	}
+	public void startFollow(String followUsername) {
+		Account follower = getAuthenticatedAcccount();
+		Account target = findAccount(followUsername);
+
+		if (follower == target)
+			return;
+
+		Follower f1 = new Follower();
+		f1.setFollowed(target);
+		f1.setFollower(follower);
+		f1.setLocalDateTime(LocalDateTime.now());
+		followerRepository.save(f1);
+	}
 
 	// FOR INIT DB
 	public void startFollow(Account target, Account follower) {

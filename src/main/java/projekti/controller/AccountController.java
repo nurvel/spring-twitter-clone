@@ -25,7 +25,6 @@ public class AccountController {
 	@Autowired
 	private ImageService imageService;
 
-	
 	@GetMapping("/accounts")
 	public String list(Model model) {
 		List<Account> as = accountService.findAll();
@@ -45,10 +44,10 @@ public class AccountController {
 	}
 
 	@PostMapping("/accounts")
-	public String add(@RequestParam String username, @RequestParam String password) {
+	public String add(@RequestParam String username, @RequestParam String password, @RequestParam String name) {
 
 		try {
-			accountService.createAccout(username, password);
+			accountService.createAccout(username, password, name);
 		} catch (Exception e) {
 			// TODO: if accout exists or other error
 		}
@@ -57,7 +56,7 @@ public class AccountController {
 
 	@PostMapping("/accounts/follow")
 	public String add(HttpServletRequest request, @RequestParam String followUsername) {
-		// accountService.startFollow(followUsername); // FIX method
+		accountService.startFollow(followUsername); // FIX method
 
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;
@@ -70,7 +69,6 @@ public class AccountController {
 		if (a == null)
 			return "redirect:/accounts";
 
-		
 		model.addAttribute("image", imageService.getImage(id));
 		model.addAttribute("account", accountService.findAccount(username));
 		return "images";
