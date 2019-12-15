@@ -31,6 +31,8 @@ public class Image extends AbstractPersistable<Long> {
 	@ManyToOne
 	private Account account;
 
+	private String caption;
+
 	// toimiiko sama?
 	@OneToMany(mappedBy = "image")
 	private List<Comment> comments = new ArrayList<>();

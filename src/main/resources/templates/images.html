@@ -23,19 +23,18 @@
 					<h1>
 						Home of <span th:text=${account.username}></span>
 					</h1>
-					<!-- 
-					<div th:replace="fragments/layout :: tweetlist(tweets=${account.tweets})"></div>
-					 -->
 
 					<div>
 						<img th:src="@{/image/{id}(id=${image.id})}" class="img-fluid" />
+						<p th:text=${image.caption}></p>
 					</div>
 
 					<span th:text=${account.username}></span> <span
 						th:text=${image.account.username}></span> <span
 						th:text="${#authentication.getPrincipal().getUsername()}"></span>
 
-					<div th:if="${#authentication.getPrincipal().getUsername() == image.account.username}">
+					<div
+						th:if="${#authentication.getPrincipal().getUsername() == image.account.username}">
 						<form method="POST" th:action="@{/image/setprofile}">
 							<input type="hidden" name="id" th:value="${image.id}"> <input
 								type="submit" value="Set as profile image" />

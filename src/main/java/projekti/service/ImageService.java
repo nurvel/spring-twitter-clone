@@ -28,7 +28,7 @@ public class ImageService {
 	@Autowired
 	CommentRepository commentRepository;
 
-	public Image saveImage(MultipartFile file, Account account) throws IOException {
+	public Image saveImage(MultipartFile file, Account account, String caption) throws IOException {
 
 		// TODO: MAX images 10
 
@@ -42,6 +42,7 @@ public class ImageService {
 
 			image.setAccount(account);
 			image.setImageFile(fo);
+			image.setCaption(caption);
 			imageRepository.save(image);
 
 		}

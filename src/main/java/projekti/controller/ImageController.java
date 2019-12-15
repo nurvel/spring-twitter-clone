@@ -30,12 +30,12 @@ public class ImageController {
 	private ImageService imageService;
 
 	@PostMapping("image")
-	public String uploadImage(@RequestParam("file") MultipartFile file) {
+	public String uploadImage(@RequestParam("file") MultipartFile file, @RequestParam String caption) {
 
 		Account account = accountService.getAuthenticatedAcccount();
 
 		try {
-			imageService.saveImage(file, account);
+			imageService.saveImage(file, account, caption);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("ERRORII PUKAAA");

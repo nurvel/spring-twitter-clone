@@ -70,7 +70,8 @@
 							class="rounded-circle">
 					</div>
 					<div th:if="${tweet.poster.profileImage != null}">
-						<img width="60" height="60" th:src="@{/image/{id}(id=${tweet.poster.profileImage.id})}"
+						<img width="60" height="60"
+							th:src="@{/image/{id}(id=${tweet.poster.profileImage.id})}"
 							class="rounded-circle">
 					</div>
 
@@ -174,8 +175,9 @@
 		<div>Postaa galleriaan</div>
 		<form method="POST" th:action="@{/image}"
 			enctype="multipart/form-data">
-			<input type="file" name="file" id="file" /> <input type="submit"
-				value="Add!" />
+			<input type="file" name="file" id="file" /> <input type="text"
+				name="caption"> 
+				<input type="submit" value="Add!" />
 		</form>
 
 	</div>
