@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import projekti.entity.Account;
+import projekti.entity.Tweet;
 import projekti.service.AccountService;
 import projekti.service.ImageService;
 
@@ -34,12 +35,19 @@ public class AccountController {
 
 	@GetMapping("/accounts/{username}")
 	public String list(Model model, @PathVariable String username) {
-		Account a = accountService.findAccount(username);
+		Account ac = accountService.findAccount(username);
 
-		if (a == null)
+		if (ac == null)
 			return "redirect:/accounts";
 
-		model.addAttribute("account", accountService.findAccount(username));
+		Account account = accountService.findAccount(username);
+
+		model.addAttribute("account", account);
+
+		List<Tweet> tweets = account.getTweets();
+		tweets.sort((Tweet a, Tweet b) -> b.getPostTime().compareTo(a.getPostTime()));
+
+		model.addAttribute("tweets", tweets);
 		return "account";
 	}
 
