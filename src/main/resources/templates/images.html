@@ -49,8 +49,12 @@
 
 
 
-					<span th:text=${image.comments.size()}> size of gallery</span> <span
-						th:text=${image.likes.size()}> size of gallery</span>
+					<p>
+						<span th:text=${image.comments.size()}> comments</span> comments
+					</p>
+					<p>
+						<span th:text=${image.likes.size()}> likes</span> likes
+					</p>
 
 					<div
 						th:replace="fragments/layout :: likeform(media=${image}, type='image')"></div>
