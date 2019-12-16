@@ -21,7 +21,7 @@
 				<div class="col-8">
 
 					<h1>
-						Home of <span th:text=${account.username}></span>
+						Pictures of <span th:text=${account.name}></span>
 					</h1>
 
 					<div>
@@ -29,17 +29,18 @@
 						<p th:text=${image.caption}></p>
 					</div>
 
+					<!-- 
 					<span th:text=${account.username}></span> <span
 						th:text=${image.account.username}></span> <span
 						th:text="${#authentication.getPrincipal().getUsername()}"></span>
-
+ -->
 					<div
 						th:if="${#authentication.getPrincipal().getUsername() == image.account.username}">
 						<form method="POST" th:action="@{/image/setprofile}">
 							<input type="hidden" name="id" th:value="${image.id}"> <input
 								type="submit" value="Set as profile image" />
 						</form>
-						
+
 						<form th:method="delete" th:action="@{/image}">
 							<input type="hidden" name="id" th:value="${image.id}"> <input
 								type="submit" value="Delete Image" />
@@ -48,18 +49,18 @@
 
 
 
-					<p>Comments:</p>
 					<span th:text=${image.comments.size()}> size of gallery</span> <span
 						th:text=${image.likes.size()}> size of gallery</span>
 
-					<div
-						th:replace="fragments/layout :: commentform(media=${image}, type='image')"></div>
 					<div
 						th:replace="fragments/layout :: likeform(media=${image}, type='image')"></div>
 
 
 
+					<p>Comments:</p>
 					<div th:replace="fragments/layout :: tweetcomments(tweet=${image})"></div>
+					<div
+						th:replace="fragments/layout :: commentform(media=${image}, type='image')"></div>
 
 
 				</div>
