@@ -29,9 +29,10 @@ public class Image extends AbstractPersistable<Long> {
 
 	@ManyToOne
 	private Account account;
+	
 	private String caption;
 
-	@OneToMany(mappedBy = "image")
+	@OneToMany(mappedBy = "image", cascade = CascadeType.ALL)
 	private List<Comment> comments = new ArrayList<>();
 
 	@ManyToMany
