@@ -32,9 +32,11 @@ public class ImageService {
 	@Autowired
 	AccountRepository accountRepository;
 
-	public Image saveImage(MultipartFile file, Account account, String caption) throws IOException {
+	public void saveImage(MultipartFile file, Account account, String caption) throws IOException {
 
-		// TODO: MAX images 10
+		// MAX images 10
+		if (account.getImages().size() >= 10)
+			return;
 
 		Image image = new Image();
 
@@ -51,7 +53,6 @@ public class ImageService {
 
 		}
 
-		return image;
 	}
 
 	public Image getImage(Long id) {
