@@ -51,18 +51,18 @@ public class TweetController {
 	}
 
 	@PostMapping("/tweets/like")
-	public String likeTweet(HttpServletRequest request, @RequestParam Long tweetId) {
+	public String likeTweet(HttpServletRequest request, @RequestParam Long id) {
 		Account account = accountService.getAuthenticatedAcccount();
-		tweetService.likeTweet(tweetId, account);
+		tweetService.likeTweet(id, account);
 
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;
 	}
 
 	@PostMapping("/tweets/comment")
-	public String commentTweet(HttpServletRequest request, @RequestParam Long tweetId, @RequestParam String commentText) {
+	public String commentTweet(HttpServletRequest request, @RequestParam Long id, @RequestParam String commentText) {
 		Account account = accountService.getAuthenticatedAcccount();
-		tweetService.commentTweet(tweetId, account, commentText);
+		tweetService.commentTweet(id, account, commentText);
 
 		String referer = request.getHeader("Referer");
 		return "redirect:" + referer;

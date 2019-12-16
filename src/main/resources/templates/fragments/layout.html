@@ -10,7 +10,7 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 
-<!-- <link rel="stylesheet" th:href="@{/css/style.css}" /> --> 
+<!-- <link rel="stylesheet" th:href="@{/css/style.css}" /> -->
 
 </head>
 
@@ -86,8 +86,9 @@
 								<a
 									th:href="@{/accounts/{username}(username=${tweet.poster.username})}">
 									<span th:text="${tweet.poster.username}"> un </span>
-								</a>
-								<span th:text="${#temporals.format(tweet.postTime, 'dd-MM-yyyy HH:mm')}"> postTime</span>
+								</a> <span
+									th:text="${#temporals.format(tweet.postTime, 'dd-MM-yyyy HH:mm')}">
+									postTime</span>
 							</div>
 						</div>
 						<div class="row">
@@ -108,15 +109,19 @@
 												th:text="${comment.text}"> text </span>
 										</div>
 
+										<div
+											th:replace="fragments/layout :: commentform(media=${tweet}, type='tweets')"></div>
+										<div
+											th:replace="fragments/layout :: likeform(media=${tweet}, type='tweets')"></div>
 
 
 									</div>
 								</div>
 							</div>
 							<div class="col-4">
-								<button type="button" class="btn btn-primary btn-sm">
-									Like <span th:text="${tweet.likes.size()}"> likes </span>
-								</button>
+								
+									Likes to tweet <span th:text="${tweet.likes.size()}"> likes </span>
+								
 							</div>
 						</div>
 					</div>
@@ -137,22 +142,30 @@
 
 
 	<div th:fragment="following">
-		<h4><span> <span th:text=${account.username}></span> is following</h4>
-			<ol>
-				<li th:each="foo : ${account.follows}">
-				<span th:text="${foo.followed.username}"> username</span>
-				<span th:text="${#temporals.format(foo.localDateTime, 'dd-MM-yyyy HH:mm')}"> username</span>
-			</ol>
+		<h4>
+			<span> <span th:text=${account.username}></span> is following
+			
+		</h4>
+		<ol>
+			<li th:each="foo : ${account.follows}"><span
+				th:text="${foo.followed.username}"> username</span> <span
+				th:text="${#temporals.format(foo.localDateTime, 'dd-MM-yyyy HH:mm')}">
+					username</span>
+		</ol>
 		</span>
 	</div>
 
 	<div th:fragment="followers">
-		<span> <h4>Following  <span th:text=${account.username}></span></h4>
+		<span>
+			<h4>
+				Following <span th:text=${account.username}></span>
+			</h4>
 
 			<ol>
 				<li th:each="fuu : ${account.followers}"><span
-					th:text="${fuu.follower.username}"> username</span>
-					<span th:text="${#temporals.format(fuu.localDateTime, 'dd-MM-yyyy HH:mm')}"> username</span>
+					th:text="${fuu.follower.username}"> username</span> <span
+					th:text="${#temporals.format(fuu.localDateTime, 'dd-MM-yyyy HH:mm')}">
+						username</span>
 			</ol>
 		</span>
 	</div>
@@ -176,8 +189,7 @@
 			</div>
 		</div>
 
-		<br /> <br />
-		<br /> 
+		<br /> <br /> <br />
 
 		<div
 			th:if="${#authentication.getPrincipal().getUsername() == account.username}">
@@ -212,8 +224,9 @@
 							</a>
 						</div>
 						<div class="row">
-							<span th:text="${comment.text}"> text </span>
-							<span th:text="${#temporals.format(comment.postTime, 'dd-MM-yyyy HH:mm')}"> username</span>
+							<span th:text="${comment.text}"> text </span> <span
+								th:text="${#temporals.format(comment.postTime, 'dd-MM-yyyy HH:mm')}">
+								username</span>
 						</div>
 
 					</div>
