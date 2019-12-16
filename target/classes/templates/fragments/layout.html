@@ -10,8 +10,7 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 
-<link rel="stylesheet" th:href="@{/css/style.css}" />
-
+<!-- <link rel="stylesheet" th:href="@{/css/style.css}" /> --> 
 
 </head>
 
@@ -213,6 +212,7 @@
 						</div>
 						<div class="row">
 							<span th:text="${comment.text}"> text </span>
+							<span th:text="${#temporals.format(comment.postTime, 'dd-MM-yyyy HH:mm')}"> username</span>
 						</div>
 
 					</div>
