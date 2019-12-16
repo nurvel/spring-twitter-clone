@@ -87,6 +87,7 @@
 									th:href="@{/accounts/{username}(username=${tweet.poster.username})}">
 									<span th:text="${tweet.poster.username}"> un </span>
 								</a>
+								<span th:text="${#temporals.format(tweet.postTime, 'dd-MM-yyyy HH:mm')}"> postTime</span>
 							</div>
 						</div>
 						<div class="row">
