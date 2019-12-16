@@ -23,8 +23,10 @@
 
 					<div th:each="account : ${accounts}">
 						<div>
-							<span th:text="${account.name}"> username</span>
-							<span th:text="${account.username}"> username</span>
+							<a
+								th:href="@{/accounts/{username}(username=${account.username})}">
+								<span th:text="${account.username}"> un </span>
+							</a> <span th:text="${account.name}"> username</span> 
 						</div>
 					</div>
 
