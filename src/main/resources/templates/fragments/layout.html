@@ -159,8 +159,10 @@
 	<div th:fragment="blokked">Blocked users</div>
 
 	<div th:fragment="gallery(account)">
-		<p>Mun galleria</p>
-		<span th:text=${account.images.size()}> size of gallery</span>
+		<h4>
+			Image gallery (<span th:text=${account.images.size()}> size of
+				gallery</span> images)
+		</h4>
 
 		<div>
 			<div th:each="image: ${account.images}">
@@ -173,14 +175,20 @@
 			</div>
 		</div>
 
+		<br /> <br />
+		<br /> 
 
-		<div>Postaa galleriaan</div>
-		<form method="POST" th:action="@{/image}"
-			enctype="multipart/form-data">
-			<input type="file" name="file" id="file" /> <input type="text"
-				name="caption"> <input type="submit" value="Add!" />
-		</form>
+		<div
+			th:if="${#authentication.getPrincipal().getUsername() == account.username}">
+			<h4>Post a new picture</h4>
+			<form method="POST" th:action="@{/image}"
+				enctype="multipart/form-data">
+				<input type="file" name="file" id="file" /> <span>Add
+					caption to image</span> <input type="text" name="caption"> <input
+					type="submit" value="Upload image" />
+			</form>
 
+		</div>
 	</div>
 
 
