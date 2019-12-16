@@ -39,8 +39,12 @@ public class ImageService {
 			return;
 
 		Image image = new Image();
+		
+		System.out.println(file.getContentType());
 
-		if (file.getContentType().equals("image/gif")) {
+		if (file.getContentType().equals("image/gif") || file.getContentType().equals("image/jpeg") || file
+				.getContentType()
+				.equals("image/jpg")) {
 
 			ImageFile fo = new ImageFile();
 			fo.setContent(file.getBytes());
