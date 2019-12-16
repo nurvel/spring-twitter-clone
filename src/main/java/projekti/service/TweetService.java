@@ -29,6 +29,10 @@ public class TweetService {
 		return tweetRepository.getOne(id);
 	}
 
+//	public List<Tweet> findAccountsTweets(Account account) {
+//		return tweetRepository.findAccountsTweets(account);
+//	}
+
 	public Tweet addTweet(String tweetText, Account account) {
 
 		Tweet tweet = new Tweet();

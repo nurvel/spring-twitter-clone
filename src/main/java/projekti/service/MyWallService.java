@@ -1,11 +1,13 @@
 package projekti.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import projekti.entity.Account;
+import projekti.entity.Follower;
 import projekti.entity.Tweet;
 import projekti.repository.TweetRepository;
 
@@ -13,26 +15,23 @@ import projekti.repository.TweetRepository;
 public class MyWallService {
 
 	@Autowired
-	TweetRepository tweetRepository;
+	TweetService tweetService;
 
 	@Autowired
-	AccountService AccountService;
+	AccountService accountService;
 
 	public List<Tweet> getMyWall() {
-		Account account = AccountService.getAuthenticatedAcccount();
-		
-		
-		// TODO: 1) My tweets 2) Tweets from who i follow 3) no tweets from blocked
-		// TODO: Sort by time and return 25 newest
+		Account account = accountService.getAuthenticatedAcccount();
 
-		// TODO: ei toimi tällä hetkellä
-		//List<Tweet> myWallTweets = tweetRepository.findTweetsByUserId(account.getId());
-		//return myWallTweets;
+		List<Tweet> myWallTweets = account.getTweets();
 
-		
-		
-		
-		 return tweetRepository.findAll();
+		for (Follower f : account.getFollows()) {
+			f.getFollowed().getTweets().forEach(x -> myWallTweets.add(x));
+		}
+
+		myWallTweets.sort((Tweet a, Tweet b) -> b.getPostTime().compareTo(a.getPostTime()));
+
+		return myWallTweets.size() > 25 ? myWallTweets.subList(0, 24) : myWallTweets;
 
 	}
 
