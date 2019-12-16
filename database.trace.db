@@ -1,0 +1,3 @@
+2019-12-16 21:57:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "CONTENT BINARY(255)": "X'ffd8ffe000104a46494600010101004800480000ffed1bbe50686f746f73686f7020332e30003842494d042500000000001000000000000000000000000000... (252134)"; SQL statement:
+insert into image_file (content, id) values (?, ?) [22001-197]

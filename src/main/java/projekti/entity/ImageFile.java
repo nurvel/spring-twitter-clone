@@ -17,6 +17,8 @@ import lombok.NoArgsConstructor;
 @Entity
 public class ImageFile extends AbstractPersistable<Long> {
 
+	
+	
 	@Lob
 	private byte[] content;
 
