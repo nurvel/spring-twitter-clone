@@ -20,15 +20,18 @@
 				<div class="col-8">
 
 					<h1>Search results</h1>
+					<p>Mind your uppercases ;) </p>
 
 					<div th:each="account : ${accounts}">
 						<div>
 							<a
 								th:href="@{/accounts/{username}(username=${account.username})}">
 								<span th:text="${account.username}"> un </span>
-							</a> <span th:text="${account.name}"> username</span> 
+							</a> <span th:text="${account.name}"> username</span>
 						</div>
 					</div>
+					
+					
 
 
 
