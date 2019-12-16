@@ -115,6 +115,7 @@
 											</a> : <span th:text="${comment.text}"> text </span>
 										</div>
 
+
 										<div
 											th:replace="fragments/layout :: commentform(media=${tweet}, type='tweets')"></div>
 										<div
@@ -259,7 +260,7 @@
 	<div th:fragment="likeform(media, type)">
 		<form method="POST" th:action="@{/{type}/like(type=${type})}">
 			<input type="hidden" name="id" th:value="${media.id}"> <input
-				type="submit" value="Like" />
+				type="submit" value="Like / Unlike" />
 		</form>
 	</div>
 
