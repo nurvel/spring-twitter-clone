@@ -67,7 +67,7 @@ public class AccountController {
 		} catch (Exception e) {
 			// TODO: if accout exists or other error
 		}
-		return "redirect:/accounts";
+		return "redirect:/login";
 	}
 
 	@PostMapping("/accounts/follow")
