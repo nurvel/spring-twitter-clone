@@ -20,7 +20,7 @@ public class ImageFile extends AbstractPersistable<Long> {
 	@Lob
 	private byte[] content;
 
-	@OneToOne(mappedBy ="imageFile",  cascade = CascadeType.REMOVE)
+	@OneToOne(mappedBy = "imageFile", cascade = CascadeType.ALL)
 	Image image;
 
 }

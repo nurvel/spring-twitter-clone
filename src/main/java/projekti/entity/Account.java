@@ -3,6 +3,7 @@ package projekti.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,8 +51,8 @@ public class Account extends AbstractPersistable<Long> {
 	@OneToMany(mappedBy = "account")
 	private List<Image> images = new ArrayList<>();
 
-	@OneToOne
-	private Image profileImage; // TODO: reference of profile IGM
+	@OneToOne (cascade=CascadeType.ALL)
+	private Image profileImage; 
 
 	@ManyToMany(mappedBy = "likes")
 	private List<Image> likedImages = new ArrayList<>();

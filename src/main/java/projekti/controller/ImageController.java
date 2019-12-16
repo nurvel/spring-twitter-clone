@@ -82,7 +82,6 @@ public class ImageController {
 	@DeleteMapping("image")
 	public String deleteImage(@RequestParam Long id) {
 		Account account = accountService.getAuthenticatedAcccount();
-		accountService.setProfileImage(account, id);
 		imageService.deleteImage(id, account);
 		return "redirect:mywall";
 	}

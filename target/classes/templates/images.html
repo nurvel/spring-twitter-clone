@@ -39,6 +39,7 @@
 							<input type="hidden" name="id" th:value="${image.id}"> <input
 								type="submit" value="Set as profile image" />
 						</form>
+						
 						<form th:method="delete" th:action="@{/image}">
 							<input type="hidden" name="id" th:value="${image.id}"> <input
 								type="submit" value="Delete Image" />

@@ -12,6 +12,7 @@ import projekti.entity.Account;
 import projekti.entity.Comment;
 import projekti.entity.Image;
 import projekti.entity.ImageFile;
+import projekti.repository.AccountRepository;
 import projekti.repository.CommentRepository;
 import projekti.repository.ImageFileRepository;
 import projekti.repository.ImageRepository;
@@ -27,6 +28,9 @@ public class ImageService {
 
 	@Autowired
 	CommentRepository commentRepository;
+
+	@Autowired
+	AccountRepository accountRepository;
 
 	public Image saveImage(MultipartFile file, Account account, String caption) throws IOException {
 
@@ -83,10 +87,14 @@ public class ImageService {
 		Image image = imageRepository.getOne(id);
 
 		if (image.getAccount() == account) {
-			//imageFileRepository.deleteById(image.getImageFile().getId());
-			imageRepository.deleteById(id);
+
+			if (account.getProfileImage() != null && account.getProfileImage().getId() == image.getId()) {
+				account.setProfileImage(null);
+				accountRepository.save(account);
+			}
+			imageFileRepository.deleteById(image.getImageFile().getId());
+			// imageRepository.deleteById(id);
 		}
 
 	}
-
 }

@@ -24,14 +24,11 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Image extends AbstractPersistable<Long> {
 
-	@OneToOne ( cascade = CascadeType.REMOVE)
+	@OneToOne(cascade = CascadeType.ALL)
 	private ImageFile imageFile;
-
-//	private LocalDateTime postTime;
 
 	@ManyToOne
 	private Account account;
-
 	private String caption;
 
 	@OneToMany(mappedBy = "image")

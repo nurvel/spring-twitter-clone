@@ -2,6 +2,7 @@ package projekti.entity;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -28,7 +29,7 @@ public class Comment extends AbstractPersistable<Long> {
 	@ManyToOne
 	private Tweet tweet;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Image image;
 
 }
