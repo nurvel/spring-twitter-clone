@@ -137,21 +137,22 @@
 
 
 	<div th:fragment="following">
-		<span> I am following: <span th:text=${account.follows.size()}></span>
+		<h4><span> <span th:text=${account.username}></span> is following</h4>
 			<ol>
-				<li th:each="foo : ${account.follows}"><span
-					th:text="${foo.followed.username}"> username</span>
+				<li th:each="foo : ${account.follows}">
+				<span th:text="${foo.followed.username}"> username</span>
+				<span th:text="${#temporals.format(foo.localDateTime, 'dd-MM-yyyy HH:mm')}"> username</span>
 			</ol>
 		</span>
 	</div>
 
 	<div th:fragment="followers">
-		<span> Are following me: <span
-			th:text=${account.followers.size()}></span>
+		<span> <h4>Following  <span th:text=${account.username}></span></h4>
 
 			<ol>
 				<li th:each="fuu : ${account.followers}"><span
 					th:text="${fuu.follower.username}"> username</span>
+					<span th:text="${#temporals.format(fuu.localDateTime, 'dd-MM-yyyy HH:mm')}"> username</span>
 			</ol>
 		</span>
 	</div>
