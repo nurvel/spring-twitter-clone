@@ -28,6 +28,17 @@
 				</div>
 				<div class="col-4">
 					<p>ACCOUNTS STUFF</p>
+
+					<div
+						th:if="${#authentication.getPrincipal().getUsername() != account.username}">
+						<form method="POST" th:action="@{/accounts/follow}">
+							<input type="hidden" name="followUsername"
+								th:value="${account.username}"> <input type="submit"
+								value="Follow/Unfollow" />
+						</form>
+					</div>
+
+
 					<div th:replace="fragments/layout :: following"></div>
 					<div th:replace="fragments/layout :: followers"></div>
 					<div th:replace="fragments/layout :: blokked"></div>

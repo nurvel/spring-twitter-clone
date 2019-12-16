@@ -22,12 +22,28 @@ public class FollowerService {
 		return followerRepository.findAll();
 	}
 
-	public Follower createFollower(Account followerAccount, Account getsFollowed) {
-		Follower follower = new Follower();
-		// follower.setFollower(followerAccount);
-		// follower.setFollowing(getsFollowed);
-		// follower.setFollowTimestamp();
-		return followerRepository.save(follower);
+	public void createFollower(Account followerAccount, Account getsFollowed) {
+
+		boolean add = true;
+
+		List<Follower> followers = getsFollowed.getFollows();
+
+		for (Follower f : followers) {
+			System.out.println("I follow: "  + f.getFollower().getName());
+			if (f.getFollower() == followerAccount) {
+				add = false;
+				followerRepository.deleteById(f.getId());
+			}
+		}
+
+		if (add) {
+			Follower follower = new Follower();
+			followerRepository.save(follower);
+		}
+
+//		Follower follower = new Follower();
+//		followerRepository.save(follower);
+
 	}
 
 	public void unfollow(Account a1, Account a2) {

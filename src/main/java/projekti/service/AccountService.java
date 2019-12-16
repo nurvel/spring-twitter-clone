@@ -57,6 +57,15 @@ public class AccountService {
 		if (follower == target)
 			return;
 
+		List<Follower> followers = target.getFollowers();
+
+		for (Follower f : followers) {
+			if (f.getFollower() == follower) {
+				followerRepository.deleteById(f.getId());
+				return;
+			}
+		}
+
 		Follower f1 = new Follower();
 		f1.setFollowed(target);
 		f1.setFollower(follower);
