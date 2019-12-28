@@ -2,7 +2,7 @@
 ### OHJEET
 
 
- 
+
 
 
 ### PROFILES
@@ -22,3 +22,6 @@ mvn clean
 git add .
 git commit -m"pushing to heroku"
 git push heroku master
+
+
+@Type(type = "org.hibernate.type.BinaryType")
